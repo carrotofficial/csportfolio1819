@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="howto.css" type="text/css" />
+    <title>How To</title>
+</head>
+<body>
+    <div id="header">
+        <h1>How To</h1>
+    </div>
+    <br>
+    <div id="content">
+        <h2 id="intro">Introduction/Table Of Contents</h2>
+        <p><em>This is a step-by-step how to page that shows how I made <a href="index.html">my "About Me" page</a>.</em></p>
+        <h3>Contents</h3>
+        <ol>
+            <li><a href="#intro">Introduction/Table Of Contents</a></li>
+            <li><a href="#sect-h">Page Header</a></li>
+            <li><a href="#sect-p">The Portfolio Section</a></li>
+            <li><a href="#sect-c">CSS</a></li>
+            
+        </ol>
+        <br>
+        <hr>
+        <br>
+        <h2 id="sect-h">Page Header</h2>
+        <p>The page header is essentially the <em>toolbar</em> or <em>navbar</em> of my webpage:</p>
+        <br>
+        <img src="images/screenshot1.png" alt="Screenshot of page header">
+        <br>
+        <p>It was also one of the hardest components to get working. That's mainly because there are a <em>lot</em> of things to get working in a small area. In summary:</p>
+        <br>
+        <ul>
+            <li>Setting the margin and padding to zero so that the header fills up the top of the page</li>
+            <li>Making the text centered</li>
+            <li>Making the text contrast with the background</li>
+            <li>Making the links work correctly (see below)</li>
+        </ul>
+        <br>
+        <h3>The Header Links</h3>
+        <p>One of the key features of the page header is the collection of links to the different sections of the page, which makes it so you don't have to scroll all the way through the page if you're just looking for a specific section. Here's how I did it:</p>
+        <br>
+        <ol>
+            <li>I gave an <code>id</code> attribute to each section heading</li>
+            <li>For each header link, I used the attribute <code>href="#[ID]"</code>, where [ID] is the <code>id</code> attribute for the corresponding header.</li>
+        </ol>
+        <br>
+        <hr>
+        <br>
+        <h2 id="sect-p">The Portfolio Section</h2>
+        <img src="images/screenshot2.png" alt="Screenshot of portfolio" id="p-image">
+        <table class="sidenote">
+            <tr>
+                <td><strong>Side Note: The Section Breaks</strong><br>The major sections are separated by a horizontal line created using the <code>hr</code> tag. Doing this creates clear boundaries between the different sections.</td>
+            </tr>
+        </table>
+        <p>The other complicated section of the page is the portfolio section, which uses the <code>iframe</code> tag to let you see all of the checkpoints on one page. It consists of:</p>
+        <br>
+        <ul>
+            <li>A table for each of the first 3 project checkpoints</li>
+            <li>For each table, the title of its corresponding checkpoint</li>
+            <li>For each table, a short description of the checkpoint</li>
+            <li>For each table, a toggleable <code>iframe</code> tag used to embed the checkpoint</li>
+        </ul>
+        <br>
+        <h3>The jQuery <code>toggle</code> function</h2>
+        <p>I used jQuery's <code>toggle</code> function to show and hide the <code>iframe</code>s. Here is the code for the "Weekly Glance" embed toggle:<br><br>
+        <code>$("#week-toggle").on("click", function(){
+                $("#week-iframe").toggle(300);
+            });</code><br><br>
+            Let's break it down:</p><br>
+            <ol>
+                <li>The <code>$("#week-toggle")</code> part uses jQuery to select the toggle button, which is assigned to the id <code>week-toggle</code>.</li>
+                <li>The <code>on("click", function(){})</code> part activates <code>function</code> if the aforementioned button is clicked.</li>
+                <li>The <code>.toggle(300)</code> part shows/hides the element with a duration of 300 milliseconds (0.3 seconds)</li>
+            </ol>
+        <br>
+        <hr>
+        <br>
+        <h2 id="sect-c">CSS</h2>
+        <p>The CSS wasn't the main feature of the page, but I did put a few small styling details in it (not an exhaustive list):</p>
+        <ul>
+            <li>Creating a border around the links when moused over</li>
+            <li>Setting the <code>border-radius</code> property on the <code>table</code> tags to create those nice rounded corners</li>
+        </ul>
+        <br>
+        <hr>
+        <br>
+        <p>I hope you found this page useful!</p>
+    </div>
+</body>
+</html>

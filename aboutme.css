@@ -1,0 +1,39 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto";
+    text-align: center;
+}
+
+.header {
+    background-color: #222;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    border-style: solid;
+    border-width: 2px;
+}
+
+a:active {
+    color: darkgray;
+}
+
+table {
+    border: 2px solid #222;
+    border-radius: 10px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.hide {
+    visibility: hidden;
+}

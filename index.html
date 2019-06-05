@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="header">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.2/css/fork-awesome.min.css" integrity="sha256-4lLe3TlXvNAuRpOIMC9of7BkBxGxZg4p9IrkF2D5ADQ=" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="aboutme.css">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#favthings-toggle").on("click", function(){
+                $("#favthings-iframe").toggle(300);
+            });
+        });
+        $(document).ready(function(){
+            $("#week-toggle").on("click", function(){
+                $("#week-iframe").toggle(300);
+            });
+        });
+        $(document).ready(function(){
+            $("#colorworld-toggle").on("click", function(){
+                $("#colorworld-iframe").toggle(300);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>ABOUT ME</h1>
+        <p><a href="#intro">Introduction</a> | <a href="#portfolio">CS Portfolio</a> | <a href="#hobby">Hobby Programming</a> | <a href="#learn">What I've Learned</a> | <a href="howto.html">"How To" Page</a></p>
+    </div>
+    <div id="content">
+        <br>
+        <br>
+        <h2 id="intro">Introduction</h2>
+        <p>Hello! I'm Nathan, currently a student studying Programming and Robotics. My main hobbies are computers and video games.</p>
+        <br>
+        <hr>
+        <br>
+        <h2 id="portfolio">CS Portfolio</h2>
+        <p>These are some of the things I've worked on in my Computer Programming class:</p>
+        <br>
+        <table width="50%">
+            <tr>
+                <td><h3>"My Favorite Things"</h3> <em>A webpage that lists some of my favorite things</em> <br> <a style="color: blue;" id="favthings-toggle">Toggle embed</a> <br> <iframe hidden id="favthings-iframe" width="600" height="400" src="int1-checkpoints/favthings.html"></iframe></td>
+            </tr>
+        </table>
+        <br>
+        <table width="50%">
+            <tr>
+                <td><h3>"Weekly Glance"</h3> <em>A to-do list / overview of the week</em> <br> <a style="color: blue;" id="week-toggle">Toggle embed</a> <br> <iframe hidden id="week-iframe" width="600" height="400" src="int1-checkpoints/week.html"></iframe></td>
+            </tr>
+        </table>
+        <br>
+        <table width="50%">
+            <tr>
+                <td><h3>"Colorful World"</h3> <em>A version of "My Favorite Things" with CSS styling</em> <br> <a style="color: blue;" id="colorworld-toggle">Toggle embed</a> <br> <iframe hidden id="colorworld-iframe" width="600" height="400" src="int1-checkpoints/colorworld.html"></iframe></td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+        <br>
+        <h2 id="hobby">Hobby Programming</h2>
+        <p>Although I'm in a programming class, it's mostly a hobby for me. Here are some of my favorite programming-related things:</p>
+        <br>
+        <p>My favorite languages include Python and HTML/CSS/JS.</p>
+        <br>
+        <hr>
+        <br>
+        <h2 id="learn">What I've Learned</h2>
+        <p>Here are some of the things I've learned in web development:</p>
+        <h1>h1 tags</h1>
+        <h2>h2 tags</h2>
+        <p>p tags</p>
+        <strong>bold text</strong>
+        <br>
+        <em>emphasized text</em>
+        <table width="50%">
+            <tr>
+                <td>tables<br><br></td>
+            </tr>
+        </table>
+        <br>
+        <p style="color: blue;">colored text</p>
+        <hr>
+    </div>
+</body>
+</html>

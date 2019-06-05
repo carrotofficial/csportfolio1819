@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="how.js"></script>
+    <style>
+        .embedtable {
+            border: 2px solid black;
+        }
+        ul {
+            list-style-position: inside;
+        }
+    </style>
+    <title>How To</title>
+</head>
+<body class="text-center">
+    <h1>How To</h1>
+    <p>For Unit 3, we were tasked with making an interactive webpage. For mine, I made an app that modifies text that's typed into a box:</p>
+    <table class="embedtable" align="center"><tr><td>
+        <button id="toggle">Show/hide embed</button>
+        <br />
+        <iframe id="embed" src="interactive.html"></iframe>
+    </td></tr></table>
+    <br />
+    <p>It includes modes that reverse the text, add <a href="https://en.wikipedia.org/wiki/Metal_umlaut">umlauts</a> to every vowel, and do some other things.</p>
+    <br />
+    <hr />
+    <br />
+    <h1>How I built it</h1>
+    <br />
+    <h2>HTML</h2>
+    <p>First, I layed out the structure of the page with this code:</p>
+    <br />
+    <table><code>
+    &lt;h1&gt;Text Modifier&lt;/h1&gt;<br />
+    &lt;select&gt;<br />
+        &lt;option&gt;option1&lt;/option&gt;<br />
+        &lt;option&gt;option2&lt;/option&gt;<br />
+        &lt;option&gt;option2&lt;/option&gt;<br />
+    &lt;/select&gt;<br />
+    &lt;input type="text" id="in" /&gt;<br />
+    &lt;h2 id="out"&gt;&lt;/h2&gt;<br />
+    &lt;script src="interactive.js"&gt;&lt;/script&gt;<br />
+    </code>
+    <br />
+    <p>Let's break that down (I'll skip the <code>h1</code> tag, because it's pretty obvious what that does):
+    <ul>
+        <li>The <code>select</code> tag creates a dropdown with the different text modification <code>option</code>s.</li>
+        <li>The <code>input</code> tag contains the text that will eventually be modified.</li>
+        <li>The <code>h2</code> tag will contain the output.</li>
+        <li>The <code>script</code> tag is at the end so that all the necessary elements will load before the JavaScript does.</li>
+    </ul>
+    </p>
+    <br />
+    <h2>JavaScript</h2>
+    <p>I started the JavaScript by saving the input, output, and dropdown in variables using the <code>getElementById</code> and <code>getElementsByTagName</code> functions:</p>
+    <br />
+    <code>var input = document.getElementById("in");<br />
+    var output = document.getElementById("out");<br />
+    var select = document.getElementsByTagName("select")[0];</code>
+    <br />
+    <br />
+    <p>Then, I used an <code>EventListener</code> on the <code>input</code> and used a <code>setTimeout</code> function to prevent the page for updating before the user <em>finishes</em> typing a character:</p>
+    <br />
+    <code>input.addEventListener("keypress", function(){<br />
+    setTimeout(function(){</code>
+    <br />
+    <h3>Testing the value of the dropdown</h3>
+    <p>In order to know which mode to use, the script needs to test the value of the dropdown. I do so with this code:</p>
+    <br />
+    <code>if (select.value == "optionGoesHere"){
+        // code to run if this option is selected
+    }</code>
+    <br />
+    <br />
+    <h3>Building the text reverse function</h3>
+    <p>The first text modification I'll go over is the one that reverses text. This is pretty straightforward: the function writes the <a href="http://unicode.org/cldr/utility/character.jsp?a=202E">Unicode right-to-left text character</a> at the beginning of the input string to reverse the text, then sets the <code>output</code> to that value:</p>
+    <br />
+    <code>output.innerHTML = "\u202e" + input.value;</code>
+    <br />
+    <h3>Adding the umlaut function</h3>
+    <p>The way this one works is running a <code>for</code> loop on every character in the input, and, if it's a vowel replacing in with the umlaut version. If it isn't a vowel, we just return the input:</p>
+    <br />
+    <code>var newStr = "";
+            for (var i=0;i &lt input.value.length;i++){<br />
+                if (input.value[i] == "a") {<br />
+                    newStr += "ä";<br />
+                }<br />
+                else {<br />
+                    newStr += input.value[i];<br />
+                }
+                </code>
+    <p>(This repeats for every other vowel)</p>
+    <br />
+    <hr />
+    <br />
+    <h1>Conclusion</h1>
+    <p>I learned a lot from this project, such as how to use <code>EventListener</code>s and use them to update a webpage without reloading it. I will make sure I remember to add a delay after an <code>onkeypress</code> event so that the code waits for the user to actually finish pressing the key.</p>
+</body>
+</html>

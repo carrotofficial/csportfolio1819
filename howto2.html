@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<style>
+        body {
+            background-image: url("https://media1.tenor.com/images/004fc13cde571f3f9e2ddb8f5f1cc9ef/tenor.gif?itemid=12693690");
+        }
+    </style>-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>How To</title>
+</head>
+<body>
+    <h1>Generative Art How To</h1>
+    <hr>
+    <h2>Overview</h2>
+    <p>I created a ProcessingJS application that appears to rotate the inside of a cube (or the top of a pyramid, depending on how you look at it) to correspond with mouse movement.<a>*</a></p>
+    <table border="1">
+        <tr>
+            <td>
+                <img src="images/screenshot3.png">
+            </td>
+        </tr>
+    </table>
+    <p>It works by defining the <code>draw</code> function to rewrite the central square to the mouse position. Since the <code>draw</code> function runs 60 times per second, it creates a smoother animation than running a loop every few seconds:<br><br>
+    <pre><code>
+        draw = function() {<br>
+        // code to loop<br>
+        };
+    </code></pre></p>
+    <hr>
+    <h2>Rationale</h2>
+    <p>I chose to do this project because I wanted to make something that changes according to user input. Therefore I used code that changes its output according to the <code>mouseX</code> and <code>mouseY</code> variables.</p>
+    <hr>
+    <h2>Details</h2>
+    <p>Specifically, the program works by calling the <code>background</code> function to clear the canvas (because otherwise the previous positions of the shapes would still appear), then calling <code>beginShape</code>, <code>vertex</code>, and <code>endShape</code> (the functions to create custom polygons) to create two trapezoids. This creates the lines that connect the large square to the small one:
+    <br><pre><code>
+        background();<br>
+        rect(0, 0, 400, 400);<br>
+        // top trapezoid<br>
+        beginShape();<br>
+        vertex(0, 0);
+        for (var i=0;i<=200;i+=200){
+            vertex(getMouse(mouseX) + i, getMouse(mouseY));
+        }
+        vertex(400, 0);
+        endShape();
+        </code> </pre><br>The trapezoid code needs to be rerun when the mouse is moved, so I placed it in the <code>draw</code> function.
+        <br>Another thing to note is this for loop:
+        <pre><code>
+        for (var i=0;i<=200;i+=200){
+            vertex(getMouse(mouseX) + i, getMouse(mouseY));
+        }
+        </code></pre><br>
+        This essentially runs the body of the loop (the <code>vertex(getMouse(mouseX) + i, getMouse(mouseY));</code> part) twice: first with <code>i</code> being equal to <code>0</code>, then with <code>i</code> being equal to <code>200</code>, which is equivalent to running the following:
+        <pre><code>
+        vertex(getMouse(mouseX), getMouse(mouseY));
+        vertex(getMouse(mouseX) + 200, getMouse(mouseY));
+        </code></pre>
+        </p>
+    <hr>
+    <h2>What I Learned</h2>
+    <p>This project helped me understand how computer programming can be utilized in order to make art interactive and/or generative. If I had more time to work on this project, I would add a feature for the cube to change color.</p>
+    <hr>
+    <footer>
+        <h2>Footnotes</h2>
+        <p id="foot1">* - The image shown is just a screenshot, not the original interactive version</p>
+    </footer>
+</body>
+</html>
